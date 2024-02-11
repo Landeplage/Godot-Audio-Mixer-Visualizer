@@ -1,28 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cpp7g0af4m0ed"]
 
-[ext_resource path="res://AudioMixerVisualizer/AudioMixerDebugVisualization.gd" type="Script" id=1]
-[ext_resource path="res://AudioMixerVisualizer/AudioMixerMeterDrawer.gd" type="Script" id=2]
-[ext_resource path="res://AudioMixerVisualizer/AudioMixerVolumeDrawer.gd" type="Script" id=3]
-[ext_resource path="res://AudioMixerVisualizer/AudioMixerDebugFont.tres" type="DynamicFont" id=4]
+[ext_resource type="Script" path="res://AudioMixerVisualizer/AudioMixerDebugVisualization.gd" id="1"]
+[ext_resource type="Script" path="res://AudioMixerVisualizer/AudioMixerMeterDrawer.gd" id="2"]
+[ext_resource type="Script" path="res://AudioMixerVisualizer/AudioMixerVolumeDrawer.gd" id="3"]
+[ext_resource type="FontFile" uid="uid://yewopnpud14o" path="res://AudioMixerVisualizer/AudioMixerDebugFont.tres" id="4"]
 
 [node name="AudioDebugVisualizer" type="CanvasLayer"]
-pause_mode = 2
+process_mode = 3
 layer = 128
 
 [node name="Mixer" type="Control" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 3
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -140.0
-margin_right = 500.0
-margin_bottom = -10.0
+offset_left = -500.0
+offset_top = -140.0
+offset_right = 500.0
+offset_bottom = -10.0
 mouse_filter = 2
-script = ExtResource( 1 )
-font_fx = ExtResource( 4 )
+script = ExtResource("1")
+font_fx = ExtResource("4")
 
 [node name="Container" type="HBoxContainer" parent="Mixer"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -30,97 +34,79 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Bus" type="PanelContainer" parent="Mixer/Container"]
-margin_left = 470.0
-margin_right = 530.0
-margin_bottom = 130.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 60, 0 )
-rect_pivot_offset = Vector2( 0, 200 )
-mouse_filter = 2
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="Mixer/Container/Bus"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 53.0
-margin_bottom = 123.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="label_name" type="Label" parent="Mixer/Container/Bus/VBox"]
-margin_right = 46.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Bus"
-align = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
 
 [node name="label_peak" type="Label" parent="Mixer/Container/Bus/VBox"]
-modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
-margin_top = 18.0
-margin_right = 46.0
-margin_bottom = 32.0
+modulate = Color(0.521569, 0.521569, 0.521569, 1)
+layout_mode = 2
 text = "-0.1"
-align = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBox" type="HBoxContainer" parent="Mixer/Container/Bus/VBox"]
-margin_top = 36.0
-margin_right = 46.0
-margin_bottom = 116.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Meter" type="Panel" parent="Mixer/Container/Bus/VBox/HBox"]
-margin_right = 20.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 20, 0 )
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
 mouse_filter = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="HBox" type="HBoxContainer" parent="Mixer/Container/Bus/VBox/HBox/Meter"]
+clip_contents = true
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = -1.0
-rect_clip_content = true
-mouse_filter = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="fill_left" type="ColorRect" parent="Mixer/Container/Bus/VBox/HBox/Meter/HBox"]
-modulate = Color( 0.0784314, 0.737255, 0.309804, 1 )
-margin_right = 7.0
-margin_bottom = 78.0
-mouse_filter = 2
+modulate = Color(0.0784314, 0.737255, 0.309804, 1)
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="fill_right" type="ColorRect" parent="Mixer/Container/Bus/VBox/HBox/Meter/HBox"]
-modulate = Color( 0.0784314, 0.737255, 0.309804, 1 )
-margin_left = 11.0
-margin_right = 18.0
-margin_bottom = 78.0
-mouse_filter = 2
+modulate = Color(0.0784314, 0.737255, 0.309804, 1)
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Volume" type="Panel" parent="Mixer/Container/Bus/VBox/HBox"]
-margin_left = 24.0
-margin_right = 29.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 5, 0 )
-mouse_filter = 2
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource( 3 )
+mouse_filter = 2
+script = ExtResource("3")
 
 [node name="VBox_fx" type="VBoxContainer" parent="Mixer/Container/Bus/VBox/HBox"]
 visible = false
-margin_left = 33.0
-margin_right = 46.0
-margin_bottom = 80.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
